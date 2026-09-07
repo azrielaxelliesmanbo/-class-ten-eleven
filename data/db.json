@@ -1,43 +1,44 @@
 {
-   "settings" :   { 
- "Nama kelas": "KELAS TEN_ELEVEN", "Nama kelas":  "KELAS TEN_ELEVEN",
-     "subtitle":  "X-11 • SMAN 1 BOJONGGEDE", 
-     "motto":  "berbeda karakter, satu tujuan. berbeda cerita, satu kelas.", 
-     "deskripsi":  "satu kelas, banyak cerita. tempat bertumbuh, belajar, ketawa bareng, dan bikin kenangan." 
-   }, },
- "pengumuman" : [ "pengumuman"  :    [
-     { {
- "id": 1, "id":  1,
-       "judul":  "Selamat datang di portal X-11", 
-       "tubuh":  "Buat akun siswa untuk masuk ke ruang kelas digital." 
-     } }
- ], ],
- "jadwal": [ "Jadwal":  [
-     { {
- "hari": "senin", "hari":  "senin",
- "waktu": "07.00 – 15.00", "time":  "07.00 – 15.00",
-       "subjek":  "Bahasa Indonesia • Matematika • PPKn" 
-     }, },
-     { {
- "hari": "selasa", "hari":  "Selasa",
- "waktu": "07.00 – 15.00", "time":  "07.00 – 15.00",
-       "subjek":  "Bahasa Inggris • Biologi • Informatika" 
-     }, },
-     { {
- "hari": "rabu", "hari":  "rabu",
- "waktu": "07.00 – 15.00", "time":  "07.00 – 15.00",
-       "subjek":  "Fisika • Sejarah • PJOK" 
-     }, },
-     { {
- "hari": "kamis", "hari":  "kamis",
- "waktu": "07.00 – 15.00", "time":  "07.00 – 15.00",
-      "subjek":  "kimia • ekonomi • seni"
-     }, },
-     { {
-       "hari":  "Jumat", 
-      "time":  "07.00 – 11.30",
-       "subjek":  "Agama • Projek Kelas • Kegiatan Sekolah" 
-     } }
- ], ],
- "gallery": [] "Gallery":  []
+  "settings": {
+    "Nama kelas": "KELAS TEN_ELEVEN",
+    "subtitle": "X-11 • SMAN 1 BOJONGGEDE",
+    "motto": "berbeda karakter, satu tujuan. berbeda cerita, satu kelas.",
+    "deskripsi": "satu kelas, banyak cerita. tempat bertumbuh, belajar, ketawa bareng, dan bikin kenangan."
+  },
+  "announcements": [
+    {
+      "id": 1,
+      "title": "Selamat datang di portal X-11",
+      "body": "Buat akun siswa untuk masuk ke ruang kelas digital."
+    }
+  ],
+  "schedule": [
+    {
+      "day": "senin",
+      "time": "07.00 – 15.00",
+      "subject": "Bahasa Indonesia • Matematika • PPKn"
+    },
+    {
+      "day": "selasa",
+      "time": "07.00 – 15.00",
+      "subject": "Bahasa Inggris • Biologi • Informatika"
+    },
+    {
+      "day": "rabu",
+      "time": "07.00 – 15.00",
+      "subject": "Fisika • Sejarah • PJOK"
+    },
+    {
+      "day": "kamis",
+      "time": "07.00 – 15.00",
+      "subject": "Kimia • Ekonomi • Seni"
+    },
+    {
+      "day": "jumat",
+      "time": "07.00 – 11.30",
+      "subject": "Agama • Projek Kelas • Kegiatan Sekolah"
+    }
+  ],
+  "gallery": [],
+  "users": []
 }
