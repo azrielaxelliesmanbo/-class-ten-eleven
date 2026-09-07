@@ -46,7 +46,7 @@
     main {
       max-width: 1100px;
       margin: auto;
-      padding: 60px 20px;
+      padding: 50px 20px;
     }
 
     .hero {
@@ -74,7 +74,7 @@
     }
 
     h3 {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     p {
@@ -84,15 +84,19 @@
 
     .button {
       display: inline-block;
-      margin-top: 25px;
+      margin-top: 20px;
       padding: 13px 18px;
       background: #4da3ff;
       color: #06101d;
       border: 0;
       border-radius: 10px;
       font-weight: bold;
-      text-decoration: none;
       cursor: pointer;
+    }
+
+    .dark-button {
+      background: #202b3d;
+      color: white;
     }
 
     section {
@@ -106,7 +110,8 @@
       margin-top: 20px;
     }
 
-    .card {
+    .card,
+    .panel {
       background: #0d1422;
       border: 1px solid #202b3d;
       border-radius: 15px;
@@ -143,7 +148,9 @@
       color: #06101d;
     }
 
-    input {
+    input,
+    textarea,
+    select {
       width: 100%;
       padding: 13px;
       margin-top: 10px;
@@ -153,11 +160,12 @@
       background: #070b14;
       color: white;
       outline: none;
+      font-family: Arial, sans-serif;
     }
 
-    .form-button {
-      width: 100%;
-      margin-top: 5px;
+    textarea {
+      min-height: 100px;
+      resize: vertical;
     }
 
     .message {
@@ -166,9 +174,8 @@
       color: #77c7ff;
     }
 
-    .user-box {
+    .dashboard {
       display: none;
-      margin-top: 30px;
     }
 
     .profile {
@@ -176,7 +183,7 @@
       border: 1px solid #202b3d;
       border-radius: 15px;
       padding: 25px;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
 
     .profile-name {
@@ -188,18 +195,6 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 15px;
-    }
-
-    .dashboard-card {
-      background: #0d1422;
-      border: 1px solid #202b3d;
-      border-radius: 15px;
-      padding: 22px;
-    }
-
-    .dashboard-card h3 {
-      font-size: 20px;
-      margin-bottom: 18px;
     }
 
     .item {
@@ -222,21 +217,15 @@
     }
 
     .schedule-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
       padding: 12px 0;
       border-bottom: 1px solid #202b3d;
-    }
-
-    .schedule-item:last-child {
-      border-bottom: 0;
     }
 
     .day {
       color: #4da3ff;
       font-weight: bold;
       text-transform: capitalize;
+      margin-bottom: 4px;
     }
 
     .gallery {
@@ -252,10 +241,51 @@
       border-radius: 10px;
     }
 
-    .logout {
-      background: #202b3d;
+    .admin-title {
+      font-size: 42px;
+      margin-bottom: 8px;
+    }
+
+    .admin-badge {
+      display: inline-block;
+      padding: 7px 12px;
+      background: #4da3ff;
+      color: #06101d;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 12px;
+      margin-bottom: 15px;
+    }
+
+    .admin-panel {
+      margin-top: 20px;
+    }
+
+    .user-row {
+      padding: 14px 0;
+      border-bottom: 1px solid #202b3d;
+    }
+
+    .user-row:last-child {
+      border-bottom: 0;
+    }
+
+    .admin-actions {
+      margin-top: 12px;
+    }
+
+    .delete {
+      background: #3a2025;
       color: white;
-      margin-top: 15px;
+      padding: 8px 12px;
+      border: 0;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .small-button {
+      padding: 9px 13px;
+      margin-top: 5px;
     }
 
     footer {
@@ -281,11 +311,6 @@
         gap: 10px;
         text-align: center;
       }
-
-      .schedule-item {
-        flex-direction: column;
-        gap: 5px;
-      }
     }
   </style>
 </head>
@@ -309,218 +334,354 @@
 
   <main>
 
-    <div class="hero">
+    <div id="home">
 
-      <span class="tag">
-        X-11 • SMAN 1 BOJONGGEDE
-      </span>
+      <div class="hero">
 
-      <h1>
-        CLASS<br>
-        <span class="blue">TEN_ELEVEN.</span>
-      </h1>
+        <span class="tag">
+          X-11 • SMAN 1 BOJONGGEDE
+        </span>
 
-      <p>
-        satu kelas, banyak cerita.
-        tempat bertumbuh, belajar, ketawa bareng,
-        dan bikin kenangan.
-      </p>
+        <h1>
+          CLASS<br>
+          <span class="blue">TEN_ELEVEN.</span>
+        </h1>
 
-      <a href="#akun" class="button">
-        masuk ke portal →
-      </a>
+        <p>
+          satu kelas, banyak cerita.
+          tempat bertumbuh, belajar, ketawa bareng,
+          dan bikin kenangan.
+        </p>
+
+        <a href="#akun" class="button">
+          masuk ke portal →
+        </a>
+
+      </div>
+
+      <section>
+
+        <h2>
+          lebih dari sekadar kelas.
+        </h2>
+
+        <p>
+          berbeda karakter, satu tujuan.
+          berbeda cerita, satu kelas.
+        </p>
+
+        <div class="cards">
+
+          <div class="card">
+            <h3>⚡ solid</h3>
+            <p>
+              saling bantu, saling dukung,
+              dan tetap satu tim.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>🎯 growth</h3>
+            <p>
+              bertumbuh lewat belajar,
+              organisasi, dan pengalaman.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>📸 memories</h3>
+            <p>
+              setiap kegiatan menjadi cerita
+              yang akan selalu dikenang.
+            </p>
+          </div>
+
+        </div>
+
+      </section>
+
+      <section id="akun">
+
+        <div class="login-box">
+
+          <div class="tabs">
+
+            <button
+              class="tab active"
+              onclick="showLogin()"
+            >
+              Login
+            </button>
+
+            <button
+              class="tab"
+              onclick="showRegister()"
+            >
+              Register
+            </button>
+
+          </div>
+
+          <div id="loginForm">
+
+            <h2>masuk</h2>
+
+            <p>
+              masuk menggunakan akun kamu.
+            </p>
+
+            <input
+              id="loginEmail"
+              type="email"
+              placeholder="Email"
+            >
+
+            <input
+              id="loginPassword"
+              type="password"
+              placeholder="Password"
+            >
+
+            <button
+              class="button"
+              onclick="login()"
+            >
+              Login
+            </button>
+
+          </div>
+
+          <div id="registerForm" style="display:none;">
+
+            <h2>buat akun</h2>
+
+            <p>
+              daftar sebagai siswa X-11.
+            </p>
+
+            <input
+              id="registerName"
+              type="text"
+              placeholder="Nama lengkap"
+            >
+
+            <input
+              id="registerEmail"
+              type="email"
+              placeholder="Email"
+            >
+
+            <input
+              id="registerPassword"
+              type="password"
+              placeholder="Password minimal 8 karakter"
+            >
+
+            <button
+              class="button"
+              onclick="register()"
+            >
+              Daftar
+            </button>
+
+          </div>
+
+          <div
+            id="message"
+            class="message"
+          ></div>
+
+        </div>
+
+      </section>
 
     </div>
 
-    <section id="tentang">
+    <!-- DASHBOARD SISWA -->
 
-      <h2>
-        lebih dari sekadar kelas.
-      </h2>
+    <div id="studentDashboard" class="dashboard">
 
-      <p>
-        berbeda karakter, satu tujuan.
-        berbeda cerita, satu kelas.
-      </p>
+      <div class="profile">
 
-      <div class="cards">
-
-        <div class="card">
-          <h3>⚡ solid</h3>
-          <p>
-            saling bantu, saling dukung,
-            dan tetap satu tim.
-          </p>
+        <div class="profile-name">
+          welcome, <span id="studentName"></span> 👋
         </div>
 
-        <div class="card">
-          <h3>🎯 growth</h3>
-          <p>
-            bertumbuh lewat belajar,
-            organisasi, dan pengalaman.
-          </p>
-        </div>
+        <p id="studentEmail"></p>
 
-        <div class="card">
-          <h3>📸 memories</h3>
-          <p>
-            setiap kegiatan menjadi cerita
-            yang akan selalu dikenang.
-          </p>
-        </div>
+        <button
+          class="button dark-button"
+          onclick="logout()"
+        >
+          Logout
+        </button>
 
       </div>
 
-    </section>
+      <div class="dashboard-grid">
 
-    <section id="akun">
+        <div class="panel">
 
-      <div class="login-box">
+          <h3>📢 pengumuman</h3>
 
-        <div class="tabs">
-
-          <button class="tab active" onclick="showLogin()">
-            Login
-          </button>
-
-          <button class="tab" onclick="showRegister()">
-            Register
-          </button>
-
-        </div>
-
-        <div id="loginForm">
-
-          <h2>masuk</h2>
-
-          <p>
-            masuk menggunakan akun siswa kamu.
-          </p>
-
-          <input
-            id="loginEmail"
-            type="email"
-            placeholder="Email"
-          >
-
-          <input
-            id="loginPassword"
-            type="password"
-            placeholder="Password"
-          >
-
-          <button
-            class="button form-button"
-            onclick="login()"
-          >
-            Login
-          </button>
-
-        </div>
-
-        <div id="registerForm" style="display:none;">
-
-          <h2>buat akun</h2>
-
-          <p>
-            daftar sebagai siswa X-11.
-          </p>
-
-          <input
-            id="registerName"
-            type="text"
-            placeholder="Nama lengkap"
-          >
-
-          <input
-            id="registerEmail"
-            type="email"
-            placeholder="Email"
-          >
-
-          <input
-            id="registerPassword"
-            type="password"
-            placeholder="Password minimal 8 karakter"
-          >
-
-          <button
-            class="button form-button"
-            onclick="register()"
-          >
-            Daftar
-          </button>
-
-        </div>
-
-        <div id="message" class="message"></div>
-
-      </div>
-
-      <div id="userBox" class="user-box">
-
-        <div class="profile">
-
-          <div class="profile-name">
-            welcome, <span id="userName"></span> 👋
-          </div>
-
-          <p id="userEmail"></p>
-
-          <button
-            class="button logout"
-            onclick="logout()"
-          >
-            Logout
-          </button>
-
-        </div>
-
-        <div class="dashboard-grid">
-
-          <div class="dashboard-card">
-
-            <h3>📢 pengumuman</h3>
-
-            <div id="announcements">
-              <div class="empty">
-                memuat pengumuman...
-              </div>
-            </div>
-
-          </div>
-
-          <div class="dashboard-card">
-
-            <h3>📅 jadwal pelajaran</h3>
-
-            <div id="schedule">
-              <div class="empty">
-                memuat jadwal...
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="dashboard-card" style="margin-top:15px;">
-
-          <h3>🖼️ gallery kelas</h3>
-
-          <div id="gallery" class="gallery">
-
+          <div id="studentAnnouncements">
             <div class="empty">
-              belum ada foto.
+              memuat...
             </div>
+          </div>
 
+        </div>
+
+        <div class="panel">
+
+          <h3>📅 jadwal</h3>
+
+          <div id="studentSchedule">
+            <div class="empty">
+              memuat...
+            </div>
           </div>
 
         </div>
 
       </div>
 
-    </section>
+      <div class="panel" style="margin-top:15px;">
+
+        <h3>🖼️ gallery kelas</h3>
+
+        <div id="studentGallery" class="gallery">
+          <div class="empty">
+            belum ada foto.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- DASHBOARD ADMIN -->
+
+    <div id="adminDashboard" class="dashboard">
+
+      <div class="profile">
+
+        <span class="admin-badge">
+          ADMINISTRATOR
+        </span>
+
+        <div class="admin-title">
+          Admin Panel 👑
+        </div>
+
+        <p>
+          kelola seluruh isi portal CLASS TEN_ELEVEN.
+        </p>
+
+        <p id="adminEmail"></p>
+
+        <button
+          class="button dark-button"
+          onclick="logout()"
+        >
+          Logout
+        </button>
+
+      </div>
+
+      <!-- DATA SISWA -->
+
+      <div class="panel admin-panel">
+
+        <h3>👥 data siswa</h3>
+
+        <div id="usersList">
+          <div class="empty">
+            memuat data siswa...
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PENGUMUMAN -->
+
+      <div class="panel admin-panel">
+
+        <h3>📢 kelola pengumuman</h3>
+
+        <input
+          id="announcementTitle"
+          type="text"
+          placeholder="Judul pengumuman"
+        >
+
+        <textarea
+          id="announcementBody"
+          placeholder="Isi pengumuman"
+        ></textarea>
+
+        <button
+          class="button"
+          onclick="addAnnouncement()"
+        >
+          Tambah Pengumuman
+        </button>
+
+        <div id="adminAnnouncements"></div>
+
+      </div>
+
+      <!-- JADWAL -->
+
+      <div class="panel admin-panel">
+
+        <h3>📅 kelola jadwal</h3>
+
+        <div id="adminSchedule"></div>
+
+        <button
+          class="button"
+          onclick="saveSchedule()"
+        >
+          Simpan Jadwal
+        </button>
+
+      </div>
+
+      <!-- GALLERY -->
+
+      <div class="panel admin-panel">
+
+        <h3>🖼️ kelola gallery</h3>
+
+        <input
+          id="galleryUrl"
+          type="url"
+          placeholder="URL gambar"
+        >
+
+        <input
+          id="galleryCaption"
+          type="text"
+          placeholder="Caption"
+        >
+
+        <button
+          class="button"
+          onclick="addGallery()"
+        >
+          Tambah Foto
+        </button>
+
+        <div
+          id="adminGallery"
+          class="gallery"
+          style="margin-top:20px;"
+        ></div>
+
+      </div>
+
+    </div>
 
   </main>
 
@@ -536,11 +697,11 @@
 
     function showLogin() {
 
-      document.getElementById("loginForm").style.display =
-        "block";
+      document.getElementById("loginForm")
+        .style.display = "block";
 
-      document.getElementById("registerForm").style.display =
-        "none";
+      document.getElementById("registerForm")
+        .style.display = "none";
 
       document.querySelectorAll(".tab")[0]
         .classList.add("active");
@@ -553,11 +714,11 @@
 
     function showRegister() {
 
-      document.getElementById("loginForm").style.display =
-        "none";
+      document.getElementById("loginForm")
+        .style.display = "none";
 
-      document.getElementById("registerForm").style.display =
-        "block";
+      document.getElementById("registerForm")
+        .style.display = "block";
 
       document.querySelectorAll(".tab")[0]
         .classList.remove("active");
@@ -584,9 +745,8 @@
 
       try {
 
-        const response = await fetch(
-          "/api/register",
-          {
+        const response =
+          await fetch("/api/register", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"
@@ -596,8 +756,7 @@
               email,
               password
             })
-          }
-        );
+          });
 
         const data =
           await response.json();
@@ -634,9 +793,8 @@
 
       try {
 
-        const response = await fetch(
-          "/api/login",
-          {
+        const response =
+          await fetch("/api/login", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"
@@ -645,17 +803,14 @@
               email,
               password
             })
-          }
-        );
+          });
 
         const data =
           await response.json();
 
         if (!response.ok) {
-
           message.textContent =
             data.error;
-
           return;
         }
 
@@ -664,9 +819,7 @@
           data.token
         );
 
-        showUser(data.user);
-
-        loadDashboard();
+        openDashboard(data.user);
 
       } catch {
 
@@ -676,22 +829,40 @@
       }
     }
 
-    function showUser(user) {
+    function openDashboard(user) {
 
-      document.querySelector(".login-box")
+      document.getElementById("home")
         .style.display = "none";
 
-      document.getElementById("userBox")
-        .style.display = "block";
+      if (user.role === "admin") {
 
-      document.getElementById("userName")
-        .textContent = user.name;
+        document.getElementById("adminDashboard")
+          .style.display = "block";
 
-      document.getElementById("userEmail")
-        .textContent = user.email;
+        document.getElementById("adminEmail")
+          .textContent = user.email;
+
+        loadAdmin();
+
+      } else {
+
+        document.getElementById("studentDashboard")
+          .style.display = "block";
+
+        document.getElementById("studentName")
+          .textContent = user.name;
+
+        document.getElementById("studentEmail")
+          .textContent = user.email;
+
+        loadStudent();
+
+      }
+
+      window.scrollTo(0, 0);
     }
 
-    async function loadDashboard() {
+    async function loadStudent() {
 
       try {
 
@@ -701,31 +872,79 @@
         const data =
           await response.json();
 
-        loadAnnouncements(
-          data.announcements || []
+        renderAnnouncements(
+          "studentAnnouncements",
+          data.announcements || [],
+          false
         );
 
-        loadSchedule(
-          data.schedule || []
+        renderSchedule(
+          "studentSchedule",
+          data.schedule || [],
+          false
         );
 
-        loadGallery(
-          data.gallery || []
+        renderGallery(
+          "studentGallery",
+          data.gallery || [],
+          false
         );
 
       } catch {
 
-        document.getElementById("announcements")
-          .innerHTML =
-          '<div class="empty">gagal memuat data.</div>';
+        console.log("gagal memuat dashboard");
 
       }
     }
 
-    function loadAnnouncements(items) {
+    async function loadAdmin() {
+
+      await loadStudentData();
+
+      await loadUsers();
+
+    }
+
+    async function loadStudentData() {
+
+      try {
+
+        const response =
+          await fetch("/api/site");
+
+        const data =
+          await response.json();
+
+        renderAnnouncements(
+          "adminAnnouncements",
+          data.announcements || [],
+          true
+        );
+
+        renderSchedule(
+          "adminSchedule",
+          data.schedule || [],
+          true
+        );
+
+        renderGallery(
+          "adminGallery",
+          data.gallery || [],
+          true
+        );
+
+      } catch {}
+
+    }
+
+    function renderAnnouncements(
+      id,
+      items,
+      adminMode
+    ) {
 
       const box =
-        document.getElementById("announcements");
+        document.getElementById(id);
 
       if (!items.length) {
 
@@ -735,28 +954,50 @@
         return;
       }
 
-      box.innerHTML = items.map(item => {
+      box.innerHTML =
+        items.map(item => {
 
-        return `
-          <div class="item">
-            <div class="item-title">
-              ${escapeHtml(item.title)}
+          return `
+            <div class="item">
+
+              <div class="item-title">
+                ${escapeHtml(item.title)}
+              </div>
+
+              <p>
+                ${escapeHtml(item.body)}
+              </p>
+
+              ${
+                adminMode
+                ? `
+                  <div class="admin-actions">
+                    <button
+                      class="delete"
+                      onclick="deleteAnnouncement(${item.id})"
+                    >
+                      Hapus
+                    </button>
+                  </div>
+                `
+                : ""
+              }
+
             </div>
+          `;
 
-            <p>
-              ${escapeHtml(item.body)}
-            </p>
-          </div>
-        `;
-
-      }).join("");
+        }).join("");
 
     }
 
-    function loadSchedule(items) {
+    function renderSchedule(
+      id,
+      items,
+      adminMode
+    ) {
 
       const box =
-        document.getElementById("schedule");
+        document.getElementById(id);
 
       if (!items.length) {
 
@@ -766,32 +1007,71 @@
         return;
       }
 
-      box.innerHTML = items.map(item => {
+      if (!adminMode) {
 
-        return `
-          <div class="schedule-item">
+        box.innerHTML =
+          items.map(item => {
 
-            <div class="day">
-              ${escapeHtml(item.day)}
+            return `
+              <div class="schedule-item">
+
+                <div class="day">
+                  ${escapeHtml(item.day)}
+                </div>
+
+                <div>
+                  ${escapeHtml(item.time)}
+                  <br>
+                  ${escapeHtml(item.subject)}
+                </div>
+
+              </div>
+            `;
+
+          }).join("");
+
+        return;
+      }
+
+      box.innerHTML =
+        items.map((item, index) => {
+
+          return `
+            <div class="schedule-item">
+
+              <input
+                id="day-${index}"
+                value="${escapeHtml(item.day)}"
+                placeholder="Hari"
+              >
+
+              <input
+                id="time-${index}"
+                value="${escapeHtml(item.time)}"
+                placeholder="Jam"
+              >
+
+              <input
+                id="subject-${index}"
+                value="${escapeHtml(item.subject)}"
+                placeholder="Mata pelajaran"
+              >
+
             </div>
+          `;
 
-            <div>
-              ${escapeHtml(item.time)}
-              <br>
-              ${escapeHtml(item.subject)}
-            </div>
-
-          </div>
-        `;
-
-      }).join("");
+        }).join("");
 
     }
 
-    function loadGallery(items) {
+    function renderGallery(
+      id,
+      items,
+      adminMode
+    ) {
 
       const box =
-        document.getElementById("gallery");
+        document.getElementById(id);
 
       if (!items.length) {
 
@@ -801,33 +1081,367 @@
         return;
       }
 
-      box.innerHTML = items.map(item => {
+      box.innerHTML =
+        items.map(item => {
 
-        return `
-          <div>
-            <img
-              src="${escapeHtml(item.url)}"
-              alt="${escapeHtml(item.caption || "Gallery kelas")}"
-            >
+          return `
+            <div>
 
-            <p>
-              ${escapeHtml(item.caption || "")}
-            </p>
-          </div>
-        `;
+              <img
+                src="${escapeHtml(item.url)}"
+                alt="${escapeHtml(item.caption || "Gallery")}"
+              >
 
-      }).join("");
+              <p>
+                ${escapeHtml(item.caption || "")}
+              </p>
+
+              ${
+                adminMode
+                ? `
+                  <button
+                    class="delete small-button"
+                    onclick="deleteGallery(${item.id})"
+                  >
+                    Hapus
+                  </button>
+                `
+                : ""
+              }
+
+            </div>
+          `;
+
+        }).join("");
 
     }
 
-    function escapeHtml(text) {
+    async function loadUsers() {
 
-      return String(text)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+      const token =
+        localStorage.getItem("token");
+
+      try {
+
+        const response =
+          await fetch("/api/users", {
+            headers: {
+              Authorization:
+                "Bearer " + token
+            }
+          });
+
+        const users =
+          await response.json();
+
+        const box =
+          document.getElementById("usersList");
+
+        if (!users.length) {
+
+          box.innerHTML =
+            '<div class="empty">belum ada siswa.</div>';
+
+          return;
+        }
+
+        box.innerHTML =
+          users.map(user => {
+
+            return `
+              <div class="user-row">
+
+                <strong>
+                  ${escapeHtml(user.name)}
+                </strong>
+
+                <p>
+                  ${escapeHtml(user.email)}
+                </p>
+
+                <p>
+                  role: ${escapeHtml(user.role)}
+                </p>
+
+                ${
+                  user.role !== "admin"
+                  ? `
+                    <button
+                      class="delete small-button"
+                      onclick="deleteUser('${user.id}')"
+                    >
+                      Hapus Akun
+                    </button>
+                  `
+                  : ""
+                }
+
+              </div>
+            `;
+
+          }).join("");
+
+      } catch {
+
+        document.getElementById("usersList")
+          .innerHTML =
+          '<div class="empty">gagal memuat siswa.</div>';
+
+      }
+    }
+
+    async function addAnnouncement() {
+
+      const title =
+        document.getElementById(
+          "announcementTitle"
+        ).value;
+
+      const body =
+        document.getElementById(
+          "announcementBody"
+        ).value;
+
+      const token =
+        localStorage.getItem("token");
+
+      const response =
+        await fetch(
+          "/api/announcements",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization:
+                "Bearer " + token
+            },
+            body: JSON.stringify({
+              title,
+              body
+            })
+          }
+        );
+
+      const data =
+        await response.json();
+
+      if (!response.ok) {
+
+        alert(data.error);
+
+        return;
+      }
+
+      document.getElementById(
+        "announcementTitle"
+      ).value = "";
+
+      document.getElementById(
+        "announcementBody"
+      ).value = "";
+
+      loadStudentData();
+
+    }
+
+    async function deleteAnnouncement(id) {
+
+      if (!confirm(
+        "hapus pengumuman ini?"
+      )) return;
+
+      const token =
+        localStorage.getItem("token");
+
+      await fetch(
+        "/api/announcements/" + id,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization:
+              "Bearer " + token
+          }
+        }
+      );
+
+      loadStudentData();
+
+    }
+
+    async function saveSchedule() {
+
+      const token =
+        localStorage.getItem("token");
+
+      const inputs =
+        document.querySelectorAll(
+          "#adminSchedule .schedule-item"
+        );
+
+      const schedule =
+        Array.from(inputs).map(
+          (item, index) => {
+
+            return {
+              day:
+                document.getElementById(
+                  "day-" + index
+                ).value,
+
+              time:
+                document.getElementById(
+                  "time-" + index
+                ).value,
+
+              subject:
+                document.getElementById(
+                  "subject-" + index
+                ).value
+            };
+
+          }
+        );
+
+      const response =
+        await fetch(
+          "/api/schedule",
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization:
+                "Bearer " + token
+            },
+            body: JSON.stringify({
+              schedule
+            })
+          }
+        );
+
+      const data =
+        await response.json();
+
+      if (!response.ok) {
+
+        alert(data.error);
+
+        return;
+      }
+
+      alert("jadwal berhasil disimpan.");
+
+    }
+
+    async function addGallery() {
+
+      const url =
+        document.getElementById(
+          "galleryUrl"
+        ).value;
+
+      const caption =
+        document.getElementById(
+          "galleryCaption"
+        ).value;
+
+      const token =
+        localStorage.getItem("token");
+
+      const response =
+        await fetch(
+          "/api/gallery",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization:
+                "Bearer " + token
+            },
+            body: JSON.stringify({
+              url,
+              caption
+            })
+          }
+        );
+
+      const data =
+        await response.json();
+
+      if (!response.ok) {
+
+        alert(data.error);
+
+        return;
+      }
+
+      document.getElementById(
+        "galleryUrl"
+      ).value = "";
+
+      document.getElementById(
+        "galleryCaption"
+      ).value = "";
+
+      loadStudentData();
+
+    }
+
+    async function deleteGallery(id) {
+
+      if (!confirm(
+        "hapus foto ini?"
+      )) return;
+
+      const token =
+        localStorage.getItem("token");
+
+      await fetch(
+        "/api/gallery/" + id,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization:
+              "Bearer " + token
+          }
+        }
+      );
+
+      loadStudentData();
+
+    }
+
+    async function deleteUser(id) {
+
+      if (!confirm(
+        "hapus akun siswa ini?"
+      )) return;
+
+      const token =
+        localStorage.getItem("token");
+
+      const response =
+        await fetch(
+          "/api/users/" + id,
+          {
+            method: "DELETE",
+            headers: {
+              Authorization:
+                "Bearer " + token
+            }
+          }
+        );
+
+      const data =
+        await response.json();
+
+      if (!response.ok) {
+
+        alert(data.error);
+
+        return;
+      }
+
+      loadUsers();
 
     }
 
@@ -853,16 +1467,29 @@
 
       localStorage.removeItem("token");
 
-      document.querySelector(".login-box")
-        .style.display = "block";
-
-      document.getElementById("userBox")
+      document.getElementById("studentDashboard")
         .style.display = "none";
+
+      document.getElementById("adminDashboard")
+        .style.display = "none";
+
+      document.getElementById("home")
+        .style.display = "block";
 
       window.location.hash = "akun";
 
-      message.textContent =
-        "kamu sudah logout.";
+      window.scrollTo(0, 0);
+
+    }
+
+    function escapeHtml(text) {
+
+      return String(text)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
 
     }
 
@@ -896,9 +1523,7 @@
         const data =
           await response.json();
 
-        showUser(data.user);
-
-        loadDashboard();
+        openDashboard(data.user);
 
       } catch {}
 
@@ -909,4 +1534,4 @@
   </script>
 
 </body>
-  </html>
+          </html>
