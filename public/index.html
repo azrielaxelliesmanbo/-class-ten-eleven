@@ -1,1183 +1,234 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CLASS TEN_ELEVEN</title>  <style>
+
+  <title>CLASS TEN_ELEVEN</title>
+
+  <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    :root {
-      --bg: #070b14;
-      --card: #0d1422;
-      --card2: #111b2d;
-      --text: #f5f8ff;
-      --muted: #9ca9bf;
-      --blue: #4da3ff;
-      --blue2: #77c7ff;
-      --danger: #ff5d73;
-      --border: rgba(255,255,255,.08);
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
-      margin: 0;
-      font-family: Inter, system-ui, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button,
-    input,
-    textarea {
-      font: inherit;
-    }
-
-    button,
-    .btn {
-      border: 0;
-      border-radius: 11px;
-      padding: 11px 15px;
-      font-weight: 800;
-      cursor: pointer;
-      background: #152238;
+      font-family: Arial, sans-serif;
+      background: #070b14;
       color: white;
-      display: inline-block;
-    }
-
-    button:hover,
-    .btn:hover {
-      opacity: .88;
-    }
-
-    .primary {
-      background: var(--blue);
-      color: #06101d;
-    }
-
-    .danger {
-      background: #3a1720;
-      color: #ff9baa;
-    }
-
-    .wrap {
-      width: min(1120px, 92%);
-      margin: auto;
-    }
-
-    .muted {
-      color: var(--muted);
+      min-height: 100vh;
     }
 
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(7,11,20,.88);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
+      padding: 20px;
+      border-bottom: 1px solid #222;
+      background: #0d1422;
     }
 
     .nav {
-      min-height: 68px;
+      max-width: 1100px;
+      margin: auto;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 15px;
+      align-items: center;
     }
 
     .logo {
-      font-weight: 900;
-      letter-spacing: 1px;
+      font-weight: bold;
+      font-size: 18px;
     }
 
-    .logo b {
-      color: var(--blue);
-    }
-
-    #navRight {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .blue {
+      color: #4da3ff;
     }
 
     main {
-      padding: 45px 0 70px;
+      max-width: 1100px;
+      margin: auto;
+      padding: 60px 20px;
     }
 
     .hero {
-      padding: 60px 0 80px;
+      padding: 60px 0;
     }
 
-    .pill {
+    .tag {
       display: inline-block;
-      padding: 7px 11px;
-      border: 1px solid #4da3ff55;
-      border-radius: 999px;
-      color: var(--blue2);
-      font-size: 12px;
-      font-weight: 800;
+      padding: 8px 12px;
+      border: 1px solid #4da3ff;
+      border-radius: 20px;
+      color: #77c7ff;
+      font-size: 13px;
     }
 
     h1 {
-      font-size: clamp(3rem, 9vw, 7rem);
-      line-height: .9;
-      letter-spacing: -5px;
-      margin: 20px 0;
-    }
-
-    h1 span {
-      color: var(--blue);
-    }
-
-    h2 {
-      font-size: 2.2rem;
-      letter-spacing: -2px;
-      margin-bottom: 10px;
-    }
-
-    h3 {
-      margin-bottom: 7px;
-    }
-
-    .hero p {
-      max-width: 680px;
-      color: var(--muted);
-      font-size: 1.08rem;
-    }
-
-    .actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 25px;
-    }
-
-    section {
-      margin-bottom: 35px;
-    }
-
-    .sectiontop {
-      margin-bottom: 20px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      padding: 20px;
-    }
-
-    .card + .card {
-      margin-top: 10px;
-    }
-
-    .row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-    }
-
-    .table {
-      overflow-x: auto;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: var(--card);
-      border-radius: 15px;
-      overflow: hidden;
-    }
-
-    th,
-    td {
-      padding: 14px;
-      text-align: left;
-      border-bottom: 1px solid var(--border);
-    }
-
-    th {
-      background: var(--card2);
-    }
-
-    input,
-    textarea {
-      width: 100%;
-      background: #080e19;
-      border: 1px solid var(--border);
-      color: white;
-      padding: 12px;
-      border-radius: 10px;
-      margin: 7px 0 13px;
-      outline: none;
-    }
-
-    input:focus,
-    textarea:focus {
-      border-color: var(--blue);
-    }
-
-    textarea {
-      min-height: 110px;
-      resize: vertical;
-    }
-
-    label {
-      display: block;
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .auth {
-      min-height: 70vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .authbox {
-      width: min(470px, 100%);
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 30px;
-    }
-
-    .err {
-      color: #ff7f91;
-      margin: 5px 0 12px;
-      font-size: 14px;
-    }
-
-    .success {
-      color: #66e6a0;
-      margin: 5px 0 12px;
-      font-size: 14px;
-    }
-
-    .tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+      font-size: clamp(45px, 9vw, 100px);
+      line-height: 0.95;
       margin: 25px 0;
     }
 
-    .tabs button.active {
-      background: var(--blue);
-      color: #06101d;
+    h2 {
+      font-size: 32px;
+      margin-bottom: 15px;
     }
 
-    .gallery {
+    p {
+      color: #9ca9bf;
+      line-height: 1.7;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 13px 18px;
+      background: #4da3ff;
+      color: #06101d;
+      border-radius: 10px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    section {
+      margin-top: 50px;
+    }
+
+    .cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
+      gap: 15px;
+      margin-top: 20px;
     }
 
-    .gallery figure {
-      margin: 0;
-      background: var(--card);
-      border: 1px solid var(--border);
+    .card {
+      background: #0d1422;
+      border: 1px solid #202b3d;
       border-radius: 15px;
-      overflow: hidden;
-    }
-
-    .gallery img {
-      width: 100%;
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      display: block;
-    }
-
-    .gallery figcaption {
-      padding: 12px;
+      padding: 22px;
     }
 
     footer {
-      border-top: 1px solid var(--border);
-      padding: 25px 0;
-      color: var(--muted);
       text-align: center;
+      padding: 30px 20px;
+      border-top: 1px solid #222;
+      color: #777;
     }
 
-    .empty {
-      text-align: center;
-      padding: 30px;
-      color: var(--muted);
-    }
-
-    @media (max-width: 750px) {
-      .grid,
-      .gallery {
+    @media (max-width: 700px) {
+      .cards {
         grid-template-columns: 1fr;
       }
 
       .nav {
-        padding: 10px 0;
         flex-direction: column;
-      }
-
-      #navRight {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      h1 {
-        letter-spacing: -3px;
-      }
-
-      .row {
-        align-items: flex-start;
-        flex-direction: column;
+        gap: 10px;
       }
     }
-  </style></head><body>  <nav>
-    <div class="wrap nav">
-      <a class="logo" href="#/">Kelas <b>Ten_Eleven</b></a>
-      <div id="navRight"></div>
-    </div>
-  </nav>  <div id="app"></div>  <footer>
-    <div class="wrap">
-      © 2026 CLASS TEN_ELEVEN • X-11 SMAN 1 BOJONGGEDE
-    </div>
-  </footer><script>
-const $ = (selector) => document.querySelector(selector);
-const app = $("#app");
-const navRight = $("#navRight");
+  </style>
+</head>
 
-let site = null;
-let me = null;
-let token = localStorage.getItem("x11_token");
+<body>
 
-async function api(url, options = {}) {
-  options.headers = {
-    ...(options.headers || {}),
-    "Content-Type": "application/json"
-  };
-
-  if (token) {
-    options.headers.Authorization = "Bearer " + token;
-  }
-
-  const response = await fetch(url, options);
-  const data = await response.json().catch(() => ({}));
-
-  if (!response.ok) {
-    throw new Error(data.error || "Terjadi kesalahan.");
-  }
-
-  return data;
-}
-
-async function boot() {
-  try {
-    site = await api("/api/site");
-
-    if (token) {
-      try {
-        const data = await api("/api/me");
-        me = data.user;
-      } catch {
-        token = null;
-        localStorage.removeItem("x11_token");
-      }
-    }
-
-    render();
-  } catch (error) {
-    app.innerHTML = `
-      <main class="wrap">
-        <div class="card">
-          <h2>gagal memuat website</h2>
-          <p class="muted">${error.message}</p>
-          <button class="primary" onclick="location.reload()">coba lagi</button>
-        </div>
-      </main>
-    `;
-  }
-}
-
-function getSettings() {
-  const s = site?.settings || {};
-
-  return {
-    className: s.className || s["Nama kelas"] || "KELAS TEN_ELEVEN",
-    subtitle: s.subtitle || "X-11 • SMAN 1 BOJONGGEDE",
-    motto: s.motto || "berbeda karakter, satu tujuan.",
-    description:
-      s.description ||
-      s.deskripsi ||
-      "satu kelas, banyak cerita. tempat bertumbuh, belajar, ketawa bareng, dan bikin kenangan."
-  };
-}
-
-function nav() {
-  if (me) {
-    navRight.innerHTML = `
-      <span class="muted">${escapeHtml(me.name || me.email)}</span>
-      ${me.role === "admin"
-        ? `<a class="btn primary" href="#/admin">admin</a>`
-        : ""}
-      <button onclick="logout()">keluar</button>
-    `;
-  } else {
-    navRight.innerHTML = `
-      <a class="btn primary" href="#/login">login</a>
-    `;
-  }
-}
-
-function render() {
-  nav();
-
-  const hash = location.hash || "#/";
-
-  if (hash === "#/login") {
-    loginPage();
-    return;
-  }
-
-  if (hash === "#/register") {
-    registerPage();
-    return;
-  }
-
-  if (hash === "#/admin") {
-    if (!me || me.role !== "admin") {
-      location.hash = "#/login";
-      return;
-    }
-
-    adminPage();
-    return;
-  }
-
-  home();
-}
-
-function home() {
-  const s = getSettings();
-
-  const announcements = site?.announcements || [];
-  const schedule = site?.schedule || [];
-  const gallery = site?.gallery || [];
-
-  app.innerHTML = `
-    <main>
-
-      <section class="hero wrap">
-        <span class="pill">${escapeHtml(s.subtitle)}</span>
-
-        <h1>
-          ${escapeHtml(s.className).replace(/\s+/, "<br>")}
-          <span>.</span>
-        </h1>
-
-        <p>${escapeHtml(s.description)}</p>
-
-        <div class="actions">
-          ${
-            me?.role === "admin"
-              ? `<a class="btn primary" href="#/admin">buka admin panel →</a>`
-              : `<a class="btn primary" href="#/login">masuk ke kelas →</a>`
-          }
-        </div>
-      </section>
-
-      <section class="wrap">
-        <div class="sectiontop">
-          <span class="pill">ABOUT</span>
-          <h2>lebih dari sekadar kelas.</h2>
-          <p class="muted">${escapeHtml(s.motto)}</p>
-        </div>
-
-        <div class="grid">
-          <div class="card">
-            <h3>⚡ solid</h3>
-            <p class="muted">
-              saling bantu, saling dukung, dan tetap satu tim.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>🎯 growth</h3>
-            <p class="muted">
-              bertumbuh lewat belajar, organisasi, dan pengalaman.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>📸 memories</h3>
-            <p class="muted">
-              setiap kegiatan jadi cerita yang bisa dikenang.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="wrap">
-        <div class="sectiontop">
-          <span class="pill">NEWS</span>
-          <h2>pengumuman.</h2>
-        </div>
-
-        ${
-          announcements.length
-            ? announcements.map(x => `
-              <div class="card">
-                <h3>${escapeHtml(x.title)}</h3>
-                <p class="muted">${escapeHtml(x.body)}</p>
-              </div>
-            `).join("")
-            : `<div class="card empty">belum ada pengumuman.</div>`
-        }
-      </section>
-
-      <section class="wrap">
-        <div class="sectiontop">
-          <span class="pill">SCHEDULE</span>
-          <h2>jadwal.</h2>
-        </div>
-
-        <div class="table">
-          <table>
-            <thead>
-              <tr>
-                <th>hari</th>
-                <th>jam</th>
-                <th>pelajaran</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              ${
-                schedule.length
-                  ? schedule.map(x => `
-                    <tr>
-                      <td>${escapeHtml(x.day)}</td>
-                      <td>${escapeHtml(x.time)}</td>
-                      <td>${escapeHtml(x.subject)}</td>
-                    </tr>
-                  `).join("")
-                  : `
-                    <tr>
-                      <td colspan="3" class="empty">
-                        belum ada jadwal.
-                      </td>
-                    </tr>
-                  `
-              }
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="wrap">
-        <div class="sectiontop">
-          <span class="pill">GALLERY</span>
-          <h2>gallery.</h2>
-        </div>
-
-        <div class="gallery">
-          ${
-            gallery.length
-              ? gallery.map(x => `
-                <figure>
-                  <img
-                    src="${escapeAttribute(x.url)}"
-                    alt="${escapeAttribute(x.caption || "foto kelas")}"
-                    loading="lazy"
-                  >
-                  <figcaption class="muted">
-                    ${escapeHtml(x.caption || "")}
-                  </figcaption>
-                </figure>
-              `).join("")
-              : `<div class="card empty">belum ada foto.</div>`
-          }
-        </div>
-      </section>
-
-    </main>
-  `;
-}
-
-function loginPage() {
-  app.innerHTML = `
-    <main class="auth wrap">
-      <div class="authbox">
-
-        <span class="pill">X-11 PORTAL</span>
-
-        <h2>masuk ke kelas.</h2>
-
-        <p class="muted">
-          login sebagai siswa atau admin.
-        </p>
-
-        <br>
-
-        <label>Email</label>
-        <input
-          id="email"
-          type="email"
-          placeholder="nama@email.com"
-        >
-
-        <label>Password</label>
-        <input
-          id="pass"
-          type="password"
-          placeholder="password"
-        >
-
-        <div id="msg" class="err"></div>
-
-        <button class="primary" onclick="doLogin()">
-          masuk
-        </button>
-
-        <a class="btn" href="#/register">
-          buat akun
-        </a>
-
+  <nav>
+    <div class="nav">
+      <div class="logo">
+        Kelas <span class="blue">Ten_Eleven</span>
       </div>
-    </main>
-  `;
-}
 
-function registerPage() {
-  app.innerHTML = `
-    <main class="auth wrap">
-      <div class="authbox">
-
-        <span class="pill">X-11 PORTAL</span>
-
-        <h2>buat akun.</h2>
-
-        <p class="muted">
-          daftar sebagai siswa kelas X-11.
-        </p>
-
-        <br>
-
-        <label>Nama</label>
-        <input
-          id="name"
-          type="text"
-          placeholder="nama lengkap"
-        >
-
-        <label>Email</label>
-        <input
-          id="email"
-          type="email"
-          placeholder="nama@email.com"
-        >
-
-        <label>Password</label>
-        <input
-          id="pass"
-          type="password"
-          placeholder="minimal 8 karakter"
-        >
-
-        <div id="msg" class="err"></div>
-
-        <button class="primary" onclick="doRegister()">
-          daftar
-        </button>
-
-        <a class="btn" href="#/login">
-          kembali
-        </a>
-
+      <div>
+        <span class="blue">X-11</span>
+        • SMAN 1 BOJONGGEDE
       </div>
-    </main>
-  `;
-}
+    </div>
+  </nav>
 
-async function doLogin() {
-  const msg = $("#msg");
+  <main>
 
-  try {
-    const data = await api("/api/login", {
-      method: "POST",
-      body: JSON.stringify({
-        email: $("#email").value.trim(),
-        password: $("#pass").value
-      })
-    });
+    <div class="hero">
 
-    token = data.token;
-    me = data.user;
+      <span class="tag">
+        X-11 • SMAN 1 BOJONGGEDE
+      </span>
 
-    localStorage.setItem("x11_token", token);
+      <h1>
+        CLASS<br>
+        <span class="blue">TEN_ELEVEN.</span>
+      </h1>
 
-    location.hash = me.role === "admin" ? "#/admin" : "#/";
-    render();
-
-  } catch (error) {
-    msg.textContent = error.message;
-  }
-}
-
-async function doRegister() {
-  const msg = $("#msg");
-
-  try {
-    await api("/api/register", {
-      method: "POST",
-      body: JSON.stringify({
-        name: $("#name").value.trim(),
-        email: $("#email").value.trim(),
-        password: $("#pass").value
-      })
-    });
-
-    msg.className = "success";
-    msg.textContent = "akun berhasil dibuat. silakan login.";
-
-    setTimeout(() => {
-      location.hash = "#/login";
-    }, 900);
-
-  } catch (error) {
-    msg.textContent = error.message;
-  }
-}
-
-async function logout() {
-  try {
-    await api("/api/logout", {
-      method: "POST"
-    });
-  } catch {}
-
-  token = null;
-  me = null;
-
-  localStorage.removeItem("x11_token");
-
-  location.hash = "#/login";
-  render();
-}
-
-function adminPage() {
-  app.innerHTML = `
-    <main class="wrap">
-
-      <span class="pill">ADMIN PANEL</span>
-
-      <h2>kendali website.</h2>
-
-      <p class="muted">
-        edit konten portal X-11 dari satu tempat.
+      <p>
+        satu kelas, banyak cerita.
+        tempat bertumbuh, belajar, ketawa bareng,
+        dan bikin kenangan.
       </p>
 
-      <div class="tabs">
-        <button class="active" onclick="tab('site', this)">
-          website
-        </button>
+      <a href="#tentang" class="button">
+        kenali kelas kami →
+      </a>
 
-        <button onclick="tab('news', this)">
-          pengumuman
-        </button>
+    </div>
 
-        <button onclick="tab('jadwal', this)">
-          jadwal
-        </button>
+    <section id="tentang">
 
-        <button onclick="tab('gallery', this)">
-          gallery
-        </button>
+      <h2>
+        lebih dari sekadar kelas.
+      </h2>
 
-        <button onclick="tab('users', this)">
-          siswa
-        </button>
-      </div>
+      <p>
+        berbeda karakter, satu tujuan.
+        berbeda cerita, satu kelas.
+      </p>
 
-      <div id="panel"></div>
+      <div class="cards">
 
-    </main>
-  `;
-
-  tab("site", document.querySelector(".tabs button"));
-}
-
-function tab(type, button) {
-  document
-    .querySelectorAll(".tabs button")
-    .forEach(x => x.classList.remove("active"));
-
-  if (button) {
-    button.classList.add("active");
-  }
-
-  const panel = $("#panel");
-
-  if (type === "site") {
-    const s = getSettings();
-
-    panel.innerHTML = `
-      <div class="card">
-
-        <h3>identitas website</h3>
-
-        <label>Nama kelas</label>
-        <input id="sn" value="${escapeAttribute(s.className)}">
-
-        <label>Subtitle</label>
-        <input id="ss" value="${escapeAttribute(s.subtitle)}">
-
-        <label>Motto</label>
-        <input id="sm" value="${escapeAttribute(s.motto)}">
-
-        <label>Deskripsi</label>
-        <textarea id="sd">${escapeHtml(s.description)}</textarea>    <button class="primary" onclick="saveSite()">
-      simpan perubahan
-    </button>
-
-  </div>
-`;
-
-return;
-
-}
-
-if (type === "news") {
-panel.innerHTML = `
-<div class="card">
-
-    <h3>tambah pengumuman</h3>
-
-    <input
-      id="nt"
-      placeholder="Judul"
-    >
-
-    <textarea
-      id="nb"
-      placeholder="Isi pengumuman"
-    ></textarea>
-
-    <button class="primary" onclick="addNews()">
-      terbitkan
-    </button>
-
-  </div>
-
-  <br>
-
-  ${
-    (site.announcements || []).map(x => `
-      <div class="card row">
-
-        <div>
-          <b>${escapeHtml(x.title)}</b>
-          <p class="muted">
-            ${escapeHtml(x.body)}
+        <div class="card">
+          <h3>⚡ solid</h3>
+          <br>
+          <p>
+            saling bantu, saling dukung,
+            dan tetap satu tim.
           </p>
         </div>
 
-        <button
-          class="danger"
-          onclick="delNews(${x.id})"
-        >
-          hapus
-        </button>
-
-      </div>
-    `).join("")
-  }
-`;
-
-return;
-
-}
-
-if (type === "jadwal") {
-panel.innerHTML = `
-<div class="card">
-
-    <h3>edit jadwal</h3>
-
-    ${
-      (site.schedule || []).map((x, i) => `
-        <div
-          class="grid"
-          style="grid-template-columns:1fr 1fr 2fr;margin-bottom:8px"
-        >
-          <input
-            id="d${i}"
-            value="${escapeAttribute(x.day)}"
-          >
-
-          <input
-            id="t${i}"
-            value="${escapeAttribute(x.time)}"
-          >
-
-          <input
-            id="s${i}"
-            value="${escapeAttribute(x.subject)}"
-          >
+        <div class="card">
+          <h3>🎯 growth</h3>
+          <br>
+          <p>
+            bertumbuh lewat belajar,
+            organisasi, dan pengalaman.
+          </p>
         </div>
-      `).join("")
-    }
 
-    <button class="primary" onclick="saveSchedule()">
-      simpan jadwal
-    </button>
-
-  </div>
-`;
-
-return;
-
-}
-
-if (type === "gallery") {
-panel.innerHTML = `
-<div class="card">
-
-    <h3>tambah foto via URL</h3>
-
-    <input
-      id="gu"
-      placeholder="https://.../foto.jpg"
-    >
-
-    <input
-      id="gc"
-      placeholder="Caption"
-    >
-
-    <button class="primary" onclick="addGallery()">
-      tambah
-    </button>
-
-  </div>
-
-  <br>
-
-  ${
-    (site.gallery || []).map(x => `
-      <div class="card row">
-
-        <span>
-          ${escapeHtml(x.caption || x.url)}
-        </span>
-
-        <button
-          class="danger"
-          onclick="delGallery(${x.id})"
-        >
-          hapus
-        </button>
+        <div class="card">
+          <h3>📸 memories</h3>
+          <br>
+          <p>
+            setiap kegiatan menjadi cerita
+            yang akan selalu dikenang.
+          </p>
+        </div>
 
       </div>
-    `).join("")
-  }
-`;
 
-return;
+    </section>
 
-}
+    <section>
 
-if (type === "users") {
-panel.innerHTML = "<div class="card"> <h3>akun siswa</h3> <p class="muted"> daftar akun yang sudah dibuat. </p> </div>";
+      <h2>
+        welcome to X-11.
+      </h2>
 
-loadUsers();
+      <p>
+        website resmi kelas Ten_Eleven.
+      </p>
 
-}
-}
+    </section>
 
-async function saveSite() {
-try {
-await api("/api/settings", {
-method: "PUT",
-body: JSON.stringify({
-className: $("#sn").value,
-subtitle: $("#ss").value,
-motto: $("#sm").value,
-description: $("#sd").value
-})
-});
+  </main>
 
-await refresh();
-
-} catch (error) {
-alert(error.message);
-}
-}
-
-async function addNews() {
-try {
-await api("/api/announcements", {
-method: "POST",
-body: JSON.stringify({
-title: $("#nt").value,
-body: $("#nb").value
-})
-});
-
-await refresh();
-
-} catch (error) {
-alert(error.message);
-}
-}
-
-async function delNews(id) {
-if (!confirm("hapus pengumuman ini?")) return;
-
-try {
-await api("/api/announcements/" + id, {
-method: "DELETE"
-});
-
-await refresh();
-
-} catch (error) {
-alert(error.message);
-}
-}
-
-async function saveSchedule() {
-try {
-const schedule = (site.schedule || []).map((x, i) => ({
-day: $("#d" + i).value,
-time: $("#t" + i).value,
-subject: $("#s" + i).value
-}));
-
-await api("/api/schedule", {
-  method: "PUT",
-  body: JSON.stringify({ schedule })
-});
-
-await refresh();
-
-} catch (error) {
-alert(error.message);
-}
-}
-
-async function addGallery() {
-try {
-await api("/api/gallery", {
-method: "POST",
-body: JSON.stringify({
-url: $("#gu").value,
-caption: $("#gc").value
-})
-});
-
-await refresh();
-
-} catch (error) {
-alert(error.message);
-}
-}
-
-async function delGallery(id) {
-if (!confirm("hapus foto ini?")) return;
-
-try {
-await api("/api/gallery/" + id, {
-method: "DELETE"
-});
-
-await refresh();
-
-} catch (error) {
-alert(error.message);
-}
-}
-
-async function loadUsers() {
-try {
-const data = await api("/api/users");
-const users = data.users || [];
-
-const panel = $("#panel");
-
-panel.innerHTML = `
-  <div class="card">
-
-    <h3>akun siswa</h3>
-
-    ${
-      users.length
-        ? users.map(user => `
-          <div
-            class="row"
-            style="padding:12px 0;border-bottom:1px solid var(--border)"
-          >
-            <div>
-              <b>${escapeHtml(user.name || "-")}</b>
-              <p class="muted">
-                ${escapeHtml(user.email || "-")}
-              </p>
-            </div>
-
-            <span class="pill">
-              ${escapeHtml(user.role || "student")}
-            </span>
-          </div>
-        `).join("")
-        : `<div class="empty">belum ada siswa.</div>`
-    }
-
-  </div>
-`;
-
-} catch (error) {
-$("#panel").innerHTML += "<div class="card"> <p class="err"> ${escapeHtml(error.message)} </p> </div>";
-}
-}
-
-async function refresh() {
-site = await api("/api/site");
-adminPage();
-}
-
-function escapeHtml(value) {
-return String(value ?? "")
-.replace(/&/g, "&")
-.replace(/</g, "<")
-.replace(/>/g, ">")
-.replace(/"/g, """)
-.replace(/'/g, "'");
-}
-
-function escapeAttribute(value) {
-return escapeHtml(value);
-}
-
-window.addEventListener("hashchange", render);
-
-boot();
-</script>
+  <footer>
+    © 2026 CLASS TEN_ELEVEN
+    • X-11 SMAN 1 BOJONGGEDE
+  </footer>
 
 </body>
 </html>
