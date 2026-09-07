@@ -50,7 +50,7 @@
     }
 
     .hero {
-      padding: 60px 0;
+      padding: 40px 0 60px;
     }
 
     .tag {
@@ -64,12 +64,12 @@
 
     h1 {
       font-size: clamp(45px, 9vw, 100px);
-      line-height: 0.95;
+      line-height: .95;
       margin: 25px 0;
     }
 
     h2 {
-      font-size: 32px;
+      font-size: 30px;
       margin-bottom: 15px;
     }
 
@@ -84,9 +84,11 @@
       padding: 13px 18px;
       background: #4da3ff;
       color: #06101d;
+      border: 0;
       border-radius: 10px;
       font-weight: bold;
       text-decoration: none;
+      cursor: pointer;
     }
 
     section {
@@ -107,11 +109,80 @@
       padding: 22px;
     }
 
+    .login-box {
+      max-width: 500px;
+      margin: 50px auto;
+      background: #0d1422;
+      border: 1px solid #202b3d;
+      border-radius: 18px;
+      padding: 25px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid #2b3950;
+      background: #111a2a;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .tab.active {
+      background: #4da3ff;
+      color: #06101d;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #2b3950;
+      border-radius: 10px;
+      background: #070b14;
+      color: white;
+      outline: none;
+    }
+
+    .form-button {
+      width: 100%;
+      margin-top: 5px;
+    }
+
+    .message {
+      margin-top: 15px;
+      text-align: center;
+      color: #77c7ff;
+    }
+
+    .user-box {
+      display: none;
+      background: #0d1422;
+      border: 1px solid #202b3d;
+      border-radius: 15px;
+      padding: 22px;
+      margin-top: 25px;
+    }
+
+    .logout {
+      background: #202b3d;
+      color: white;
+      margin-left: 10px;
+    }
+
     footer {
       text-align: center;
       padding: 30px 20px;
       border-top: 1px solid #222;
       color: #777;
+      margin-top: 50px;
     }
 
     @media (max-width: 700px) {
@@ -122,6 +193,7 @@
       .nav {
         flex-direction: column;
         gap: 10px;
+        text-align: center;
       }
     }
   </style>
@@ -161,8 +233,8 @@
         dan bikin kenangan.
       </p>
 
-      <a href="#tentang" class="button">
-        kenali kelas kami →
+      <a href="#akun" class="button">
+        masuk ke portal →
       </a>
 
     </div>
@@ -211,15 +283,106 @@
 
     </section>
 
-    <section>
+    <section id="akun">
 
-      <h2>
-        welcome to X-11.
-      </h2>
+      <div class="login-box">
 
-      <p>
-        website resmi kelas Ten_Eleven.
-      </p>
+        <div class="tabs">
+
+          <button class="tab active" onclick="showLogin()">
+            Login
+          </button>
+
+          <button class="tab" onclick="showRegister()">
+            Register
+          </button>
+
+        </div>
+
+        <div id="loginForm">
+
+          <h2>masuk</h2>
+
+          <p>
+            masuk menggunakan akun siswa kamu.
+          </p>
+
+          <input
+            id="loginEmail"
+            type="email"
+            placeholder="Email"
+          >
+
+          <input
+            id="loginPassword"
+            type="password"
+            placeholder="Password"
+          >
+
+          <button
+            class="button form-button"
+            onclick="login()"
+          >
+            Login
+          </button>
+
+        </div>
+
+        <div id="registerForm" style="display:none;">
+
+          <h2>buat akun</h2>
+
+          <p>
+            daftar sebagai siswa X-11.
+          </p>
+
+          <input
+            id="registerName"
+            type="text"
+            placeholder="Nama lengkap"
+          >
+
+          <input
+            id="registerEmail"
+            type="email"
+            placeholder="Email"
+          >
+
+          <input
+            id="registerPassword"
+            type="password"
+            placeholder="Password minimal 8 karakter"
+          >
+
+          <button
+            class="button form-button"
+            onclick="register()"
+          >
+            Daftar
+          </button>
+
+        </div>
+
+        <div id="message" class="message"></div>
+
+      </div>
+
+      <div id="userBox" class="user-box">
+
+        <h2>
+          welcome, <span id="userName"></span> 👋
+        </h2>
+
+        <p id="userEmail"></p>
+
+        <button
+          class="button logout"
+          onclick="logout()"
+        >
+          Logout
+        </button>
+
+      </div>
 
     </section>
 
@@ -230,5 +393,191 @@
     • X-11 SMAN 1 BOJONGGEDE
   </footer>
 
+  <script>
+
+    const message = document.getElementById("message");
+
+    function showLogin() {
+      document.getElementById("loginForm").style.display = "block";
+      document.getElementById("registerForm").style.display = "none";
+
+      document.querySelectorAll(".tab")[0].classList.add("active");
+      document.querySelectorAll(".tab")[1].classList.remove("active");
+
+      message.textContent = "";
+    }
+
+    function showRegister() {
+      document.getElementById("loginForm").style.display = "none";
+      document.getElementById("registerForm").style.display = "block";
+
+      document.querySelectorAll(".tab")[0].classList.remove("active");
+      document.querySelectorAll(".tab")[1].classList.add("active");
+
+      message.textContent = "";
+    }
+
+    async function register() {
+
+      const name =
+        document.getElementById("registerName").value;
+
+      const email =
+        document.getElementById("registerEmail").value;
+
+      const password =
+        document.getElementById("registerPassword").value;
+
+      message.textContent = "mendaftarkan akun...";
+
+      try {
+
+        const response = await fetch("/api/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            password
+          })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          message.textContent = data.error;
+          return;
+        }
+
+        message.textContent =
+          "akun berhasil dibuat. silakan login.";
+
+        showLogin();
+
+      } catch {
+        message.textContent =
+          "terjadi kesalahan koneksi.";
+      }
+    }
+
+    async function login() {
+
+      const email =
+        document.getElementById("loginEmail").value;
+
+      const password =
+        document.getElementById("loginPassword").value;
+
+      message.textContent = "memproses login...";
+
+      try {
+
+        const response = await fetch("/api/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            email,
+            password
+          })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          message.textContent = data.error;
+          return;
+        }
+
+        localStorage.setItem(
+          "token",
+          data.token
+        );
+
+        showUser(data.user);
+
+      } catch {
+        message.textContent =
+          "terjadi kesalahan koneksi.";
+      }
+    }
+
+    function showUser(user) {
+
+      document.querySelector(".login-box").style.display =
+        "none";
+
+      document.getElementById("userBox").style.display =
+        "block";
+
+      document.getElementById("userName").textContent =
+        user.name;
+
+      document.getElementById("userEmail").textContent =
+        user.email;
+    }
+
+    async function logout() {
+
+      const token =
+        localStorage.getItem("token");
+
+      try {
+
+        await fetch("/api/logout", {
+          method: "POST",
+          headers: {
+            Authorization: "Bearer " + token
+          }
+        });
+
+      } catch {}
+
+      localStorage.removeItem("token");
+
+      document.querySelector(".login-box").style.display =
+        "block";
+
+      document.getElementById("userBox").style.display =
+        "none";
+
+      message.textContent =
+        "kamu sudah logout.";
+    }
+
+    async function checkLogin() {
+
+      const token =
+        localStorage.getItem("token");
+
+      if (!token) return;
+
+      try {
+
+        const response = await fetch("/api/me", {
+          headers: {
+            Authorization: "Bearer " + token
+          }
+        });
+
+        if (!response.ok) {
+          localStorage.removeItem("token");
+          return;
+        }
+
+        const data = await response.json();
+
+        showUser(data.user);
+
+      } catch {}
+    }
+
+    checkLogin();
+
+  </script>
+
 </body>
-</html>
+            </html>
