@@ -36,7 +36,7 @@ function seedAdmin(){
 
   if(!db.users) db.users = [];
 
-  if(!db.users.some(u  =>  u.role === "admin")){
+  if(!db.users.some(u => u.role === "admin")){
     const p = hashPassword(
       process.env.ADMIN_PASSWORD || "AdminX11!2026"
     );
@@ -259,7 +259,7 @@ app.post("/api/gallery",auth,admin,(req,res)=>{
   const item = {
     id:Date.now(),
     url:String(req.body.url || "").trim(),
-     caption:String(req.body.caption || "").trim() caption:String(req.body.caption || "").trim()
+    caption:String(req.body.caption || "").trim()
   };
 
   if(!item.url)
@@ -274,11 +274,11 @@ app.post("/api/gallery",auth,admin,(req,res)=>{
 });
 
 app.delete("/api/gallery/:id",auth,admin,(req,res)=>{
-  dbdb    =   bacaDB();
+  const db = readDB();
 
-  db.galeri  =
-    (db.galeri  ||  [])
-     . filter(x  =>  x.id  !==  Nomor(req.params.id));
+  db.gallery =
+    (db.gallery || [])
+    .filter(x => x.id !== Number(req.params.id));
 
   writeDB(db);
 
@@ -302,7 +302,7 @@ app.get("/api/users",auth,admin,(req,res)=>{
 app.delete("/api/users/:id",auth,admin,(req,res)=>{
   if(req.params.id === req.user.id)
     return res.status(400).json({
-        error:"Admin utama tidak bisa menghapus dirinya sendiri." error:"Admin utama tidak bisa menghapus dirinya sendiri." error:"Admin utama tidak bisa menghapus dirinya sendiri." error:"Admin utama tidak bisa menghapus dirinya sendiri."
+      error:"Admin utama tidak bisa menghapus dirinya sendiri."
     });
 
   const db = readDB();
@@ -319,9 +319,12 @@ app.delete("/api/users/:id",auth,admin,(req,res)=>{
 app.get("*",(req,res)=>{
   res.sendFile(
     path.join(__dirname,"public","index.html")
-  );    
-aplikasi/* dengarkan(PORT, "0.0.0.0", () => {
- konsol.log( 
-  javass TEN_ELEVEN berjalan pada port ${PORT} dengan  
-   ); 
+  );
+});
+
+/* penting untuk Render */
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(
+    `CLASS TEN_ELEVEN running on port ${PORT}`
+  );
 });
